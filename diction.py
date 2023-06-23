@@ -29,3 +29,4 @@ try:
         return True
 except requests.exceptions.ConnectionError:
     print( "Connection refused")
+#Karol Majewski
