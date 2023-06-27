@@ -1,6 +1,4 @@
 from letter_state import Letter_state
-import pandas as pd
-import random
 
 class Wordle:
 
@@ -10,12 +8,13 @@ class Wordle:
     def __init__(self, secret: str):
         self.secret: str = secret.upper()
         self.attempts = []
+        self.att =[]
         pass
 
 
     def attempt(self, word:str):
         word = word.upper()
-        self.attempts.append(word)
+        self.att.append(word)
     def guess(self, word:str):
         word= word.upper()
         result =[]
@@ -24,6 +23,8 @@ class Wordle:
             result.append("\033[92m {}\033[00m".format(col))
         def prYellow(col):  # print yellow
             result.append("\033[93m {}\033[00m".format(col))
+
+
 
         for i in range(self.WORD_LENGTH):
             character = word[i]
@@ -36,12 +37,19 @@ class Wordle:
                 letter = prYellow(letter)
             else:
                 result.append(f' {letter}')
-        print(*result)
-        return result
+        self.attempts.append(result)
 
+        for attempt in self.attempts:
+            print(*attempt)
+        #print(self.att)
+
+
+    def brd(self, word:str):
+        for i in range(self.remaining_attempts):
+            print("_" * Wordle.WORD_LENGTH)
     @property
     def is_solved(self):
-        return len(self.attempts) > 0 and self.attempts[-1] == self.secret
+        return len(self.att) > 0 and self.att[-1] == self.secret
 
     @property
     def remaining_attempts(self) -> int:

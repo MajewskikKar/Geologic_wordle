@@ -23,10 +23,12 @@ def main():
             print(f"słowo musi zawierać {wordle.WORD_LENGTH} znaków")
             continue
         if check_word(x) != True:
-            print("słowo nie występuje w słowniku. Wpisz inne.")
-            continue
+           print("słowo nie występuje w słowniku. Wpisz inne.")
+           continue
         wordle.attempt(x)
         result = wordle.guess(x)
+        wordle.brd(x)
+
         print(f'Pozostało prób: {wordle.remaining_attempts}')
     if wordle.is_solved:
         print("gratulacje, zgadłeś")
