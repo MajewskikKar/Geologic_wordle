@@ -59,3 +59,4 @@ class Wordle:
         return self.remaining_attempts > 0 and not self.is_solved
 
 #Karol Majewski
+#
